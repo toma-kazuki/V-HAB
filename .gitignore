@@ -1,15 +1,15 @@
 # Ignore for STEPS base folder
 
 # Ignore all user folders except the tutorials, examples and tests folder
-user/+*
-!user/+tutorials
-!user/+examples
-!user/+simulations
-!user/+tests
+# user/+*
+# !user/+tutorials
+# !user/+examples
+# !user/+simulations
+# !user/+tests
 
 # Ignore simulation results, excepct README
-data/*
-!data/README.md
+# data/*
+# !data/README.md
 
 # Ignore stupid MATLAB prerelease folder
 SupportPackages/
