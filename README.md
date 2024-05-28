@@ -1,3 +1,28 @@
+# VHABチュートリアル作成
+
+## メモ
+* vhab.simおよびvhab.execがあやしい
+* function oSim = sim(sSimulation, varargin)
+  * sSimulationからシミュレーションオブジェクトを生成する
+  * simConstructor = str2func(sSimulation)：パスを記述する文字列からシミュレーション構築関数を生成
+  * oSim = simConstructor(varargin{:})：シミュレーション構築関数からシミュレーションオブジェクトを作成
+  * oSim.initialize()：結構大事な何か
+* function oSimRtn = exec(sSimulation, ptConfigParams, tSolverParams, varargin)
+* 気になるパラメーター
+  * sSimulation：ストリングの型を持つ、シミュレーションクラスファイルにアクセスするためのパスを記述する(例：'tutorials.simple_flow.setup')
+  * ptConfigParams
+  * tSolverParams
+  * varagin
+* 気になる関数
+  * [1] oSim：vhab.simによって作られるシミュレーションオブジェクト
+  * [1] oSim.run
+  * [1] str2func(sSimulation)：パスを記述する文字列からシミュレーション構築関数を生成→MATLABの標準関数だった
+    * https://jp.mathworks.com/help/matlab/ref/str2func.html
+    *  文字から関数ハンドルを作る
+  * [1] simConstructor：シミュレーション構築関数：sSimulationで表現されたシミュレーション関数のハンドル
+
+
+
 Welcome to the Virtual Habitat (V-HAB)
 ------------------------
 V-HAB is a MATLAB-based simulation system specifically designed for the analysis of life support systems in crewed spacecraft. 
