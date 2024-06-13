@@ -52,6 +52,11 @@ classdef Example < vsys
             %                              	 sHelper,  sType,  sPhaseName, fVolume,     tfPartialPressure,        fTemperature, rRelativeHumidity)
             this.toStores.Vacuum.createPhase(  'gas', 'boundary',   'Vacuum',   1e6, 	struct('N2', 2),          3,          0);
             %matter.phases.boundary.gas(this.toStores.Vacuum, 'Vacuum', struct('N2', 2), 1e6, 3);
+
+            %% 混合物の定義
+            matter.phases.mixture(this.toStores.CO2_Removal, 'LiOH', 'solid', struct('Li',50), 293, 1e5);
+
+
         end
        
         function createSolverStructure(this)
