@@ -31,10 +31,10 @@ classdef Example < vsys
 
             %%  液体の定義
             matter.phases.liquid(this.toStores.Condensate_Storage, 'Condensate', struct('H2O',1), 293, 1e5);
-            matter.phases.liquid(this.toStores.HX_Coolant, 'Coolant', struct('H20',10), 293, 1e5);
-            matter.phases.liquid(this.toStores.O2_Generation, 'Water', struct('H20',10), 293, 1e5);
-            matter.phases.liquid(this.toStores.Water_Supply, 'Water', struct('H20',1000), 293, 1e5);
-            matter.phases.liquid(this.toStores.Waste_Storage, 'Liquid_Waste', struct('H20',0.1), 293, 1e5);
+            matter.phases.liquid(this.toStores.HX_Coolant, 'Coolant', struct('H2O',10), 293, 1e5);
+            matter.phases.liquid(this.toStores.O2_Generation, 'Water', struct('H2O',10), 293, 1e5);
+            matter.phases.liquid(this.toStores.Water_Supply, 'Water', struct('H2O',1000), 293, 1e5);
+            matter.phases.liquid(this.toStores.Waste_Storage, 'Liquid_Waste', struct('H2O',0.1), 293, 1e5);
             
             %%  気体の定義
             matter.phases.gas(this.toStores.O2_Generation, 'Hydrogen', struct('H2',0.3), 0.25, 293);
