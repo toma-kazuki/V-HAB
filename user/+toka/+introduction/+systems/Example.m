@@ -36,10 +36,22 @@ classdef Example < vsys
             matter.phases.liquid(this.toStores.Water_Supply, 'Water', struct('H20',1000), 293, 1e5);
             matter.phases.liquid(this.toStores.Waste_Storage, 'Liquid_Waste', struct('H20',0.1), 293, 1e5);
             
+            %%  気体の定義
             matter.phases.gas(this.toStores.O2_Generation, 'Hydrogen', struct('H2',0.3), 0.25, 293);
             matter.phases.gas(this.toStores.O2_Generation, 'Oxygen', struct('H2',0.1), 0.25, 293);
-        	            %                               sHelper,   sPhaseName, fVolume,          tfPartialPressure,               fTemperature, rRelativeHumidity)
+
+            %%%  気体(分圧で定義する場合)の定義
+        	%                               sHelper,   sPhaseName, fVolume,          tfPartialPressure,               fTemperature, rRelativeHumidity)
             this.toStores.Cabin.createPhase(  'gas',   'CabinAir',   54.99, struct('N2', 8e4, 'O2', 2e4, 'CO2', 500),          293,          0.5);
+
+            %%%  フローフェーズの定義(CO2フィルター用のフロー相を定義する場合)
+            %                              		  sHelper,  sType,  sPhaseName, fVolume,          tfPartialPressure,               fTemperature, rRelativeHumidity)
+            this.toStores.CO2_Removal.createPhase(  'gas', 'flow',   'Air',   0.01, struct('N2', 8e4, 'O2', 2e4, 'CO2', 500),          293,          0.5);
+            %matter.phases.flow.gas(this.toStores.CO2_Removal, 'Air', struct('N2', 8e4, 'O2', 2e4, 'CO2', 500, 'H20', "???"), 0.01,  293);
+            %%% 境界フェーズの定義(無限大となるべき相もあります。今の例で言えば、宇宙船の周りの真空だ)
+            %                              	 sHelper,  sType,  sPhaseName, fVolume,     tfPartialPressure,        fTemperature, rRelativeHumidity)
+            this.toStores.Vacuum.createPhase(  'gas', 'boundary',   'Vacuum',   1e6, 	struct('N2', 2),          3,          0);
+            %matter.phases.boundary.gas(this.toStores.Vacuum, 'Vacuum', struct('N2', 2), 1e6, 3);
         end
        
         function createSolverStructure(this)
