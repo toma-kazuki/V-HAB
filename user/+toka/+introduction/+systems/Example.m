@@ -47,7 +47,7 @@ classdef Example < vsys
             %%%  フローフェーズの定義(CO2フィルター用のフロー相を定義する場合)
             %                              		  sHelper,  sType,  sPhaseName, fVolume,          tfPartialPressure,               fTemperature, rRelativeHumidity)
             this.toStores.CO2_Removal.createPhase(  'gas', 'flow',   'Air',   0.01, struct('N2', 8e4, 'O2', 2e4, 'CO2', 500),          293,          0.5);
-            %matter.phases.flow.gas(this.toStores.CO2_Removal, 'Air', struct('N2', 8e4, 'O2', 2e4, 'CO2', 500, 'H20', "???"), 0.01,  293);
+            %matter.phases.flow.gas(this.toStores.CO2_Removal, 'Air', struct('N2', 8e4, 'O2', 2e4, 'CO2', 500, 'H20', 3889), 0.01,  293);
             %%% 境界フェーズの定義(無限大となるべき相もあります。今の例で言えば、宇宙船の周りの真空だ)
             %                              	 sHelper,  sType,  sPhaseName, fVolume,     tfPartialPressure,        fTemperature, rRelativeHumidity)
             this.toStores.Vacuum.createPhase(  'gas', 'boundary',   'Vacuum',   1e6, 	struct('N2', 2),          3,          0);
